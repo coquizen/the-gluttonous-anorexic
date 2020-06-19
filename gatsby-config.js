@@ -14,10 +14,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/content`,
-        name: 'pages',
+        name: "pages",
       },
     },
     `gatsby-transformer-sharp`,
@@ -39,14 +39,17 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          `Lora`,
-          `Poppins`
-        ],
-        display: 'swap'
-      }
+        fonts: [`Lora`, `Poppins`],
+        display: "swap",
+      },
     },
     `gatsby-plugin-netlify-cms`,
+    {
+      resolve: "gatsby-plugin-netlify-identity",
+      options: {
+        url: "the-gluttonous-anorexic.netlify.app",
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

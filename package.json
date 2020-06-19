@@ -1,14 +1,17 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "the-gluttonous-anorexic",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A restaurant template site using Gatsby. Netlify, and React",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "theicecreamstudios",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-brands-svg-icons": "^5.12.0",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
+    "@reach/dialog": "^0.10.4",
+    "@reach/tabs": "^0.10.4",
+    "@reach/visually-hidden": "^0.10.4",
     "babel-plugin-styled-components": "^1.10.6",
     "eslint-plugin-graphql": "^4.0.0",
     "gatsby": "^2.18.12",
@@ -16,6 +19,7 @@
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.2.31",
     "gatsby-plugin-netlify-cms": "^4.3.5",
+    "gatsby-plugin-netlify-identity": "^0.0.3",
     "gatsby-plugin-offline": "^3.0.27",
     "gatsby-plugin-react-helmet": "^3.1.16",
     "gatsby-plugin-sharp": "^2.3.5",
@@ -24,10 +28,12 @@
     "gatsby-transformer-remark": "^2.6.48",
     "gatsby-transformer-sharp": "^2.3.7",
     "netlify-cms-app": "^2.12.15",
+    "netlify-identity-widget": "^1.6.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-netlify-identity-widget": "^0.2.7",
     "react-slick": "^0.25.2",
     "react-svg": "^11.0.6",
     "slick-carousel": "^1.8.1",
@@ -51,7 +57,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/CaninoDev/the-gluttonous-anorexic.git"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
