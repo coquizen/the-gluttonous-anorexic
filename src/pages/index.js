@@ -25,8 +25,8 @@ const IndexPage = props => {
       <HomeStyles>
         <div className="landing">
           <div className="landing-box">
-            <h2>{landingContent.landingHeading}</h2>
-            <p>{landingContent.landingSubtext}</p>
+            <h2>{landingContent.heading}</h2>
+            <p>{landingContent.subtext}</p>
             <Link to="/menu">
               <ActionButton>View our menu</ActionButton>
             </Link>
@@ -207,8 +207,8 @@ export const query = graphql`
       fileAbsolutePath: { regex: "/landing-content.md/" }
     ) {
       frontmatter {
-        landingHeading
-        landingSubtext
+        heading
+        subtext
       }
     }
   }

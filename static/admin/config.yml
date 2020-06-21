@@ -1,18 +1,109 @@
 backend:
   name: git-gateway
-  branch: master
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
+
 media_folder: static/img
 public_folder: /img
-publish_mode: editorial_workflow
-
 
 collections:
-- name: 'homePage'
-  label: 'Home Page'
-  files:
-    - file: 'src/content/landing-content.md'
-      label: 'Landing Page'
-      name: 'landingPage'
-      fields:
-        - { label: 'Landing Heading', name: landingHeading, widget: string }
-        - { label: 'Landing subtext', name: 'landingSubtext', widget: string }
+  - name: "page"
+    label: "Pages"
+    files:
+      - file: "src/content/landing-content.md"
+        label: "Landing Page"
+        name: "landingPage"
+        fields:
+          - { label: Heading, name: heading, widget: string }
+          - { label: Subtext, name: subtext, widget: text }
+      - file: "src/content/contact-info.md"
+        label: "Contact Info Page"
+        name: "contactpage"
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Address1, name: address1, widget: string }
+          - { label: Address2, name: address2, widget: string }
+          - { label: City, name: city, widget: string }
+          - { label: State, name: state, widget: string }
+          - { label: ZipCode, name: zipCode, widget: number }
+          - { label: eMail, name: eMail, widget: string }
+          - { label: "Telephone Number", name: telphone, widget: string }
+
+  - name: Menus
+    label: menus
+    folder: "src/content/menus"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Description, name: description, widget: text }
+      - {
+          label: Time,
+          name: time,
+          widget: datetime,
+          dateFormat: false,
+          timeFormat: true,
+        }
+
+  - name: "FoodItems"
+    label: "Food Items"
+    files:
+      - file: "src/content/foodItems/dishes.md"
+        label: Dishes
+        name: dishes
+        widget: list
+        fields:
+          - { label: Name, name: name, widget: text, required: true }
+          - { label: Description, name: description, widget: text }
+          - { label: Price, name: price, widget: number }
+          - {
+              label: Sides,
+              name: sides,
+              widget: relation,
+              collection: sides,
+              valueField: name,
+              searchFields: ["name"],
+              displayFields: ["name"],
+              multiple: true,
+            }
+          - {
+              label: "Member Menu",
+              name: menumember,
+              widget: relation,
+              collection: menus,
+              valueField: name,
+              searchFields: ["name"],
+              displayFields: ["name"],
+              multiple: true
+            }
+      - file: "src/content/footItem/sides.md"
+        label: Sides
+        name: sides
+        widget: list
+        fields:
+          - { label: Name, name: Name, widget: string, required: true }
+          - { label: Description, name: description, widget: text }
+          - { label: Price, name: price, widget: number }
+      - file: "src/content/footItem/sides.md"
+        label: Drinks
+        name: drinks
+        widget: list
+        fields:
+          - { label: Name, name: name, widget: text, required: true }
+          - { label: Description, name: description, widget: text }
+          - { label: Price, name: price, widget: number }
+          - {
+              label: "Member Menu",
+              name: menumember,
+              widget: relation,
+              collection: menus,
+              valueField: name,
+              searchFields: ["name"],
+              displayFields: ["name"],
+              multiple: true,
+            }

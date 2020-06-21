@@ -68,7 +68,7 @@ const Header = ({ siteTitle }) => {
     <Fragment>
       <HeaderStyles>
         <Link to="/">
-          <h4>Restaurant Name</h4>
+          <h4>{siteTitle}</h4>
         </Link>
         <img
           src={HamburgerIcon}
