@@ -92,7 +92,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: Name, name: name, widget: text, required: true }
+      - { label: Name, name: name, widget: string, required: true }
       - { label: Description, name: description, widget: text }
       - { label: Price, name: price, widget: number }
       - { label: "Member Menu", name: menumember, widget: relation, collection: menus, valueField: name, searchFields: ["name"], multiple: true }
