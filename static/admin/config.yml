@@ -33,77 +33,66 @@ collections:
           - { label: eMail, name: eMail, widget: string }
           - { label: "Telephone Number", name: telphone, widget: string }
 
-  - name: Menus
-    label: menus
+  - name: menus
+    label: Menus
     folder: "src/content/menus"
     create: true
     slug: "{{slug}}"
-    identifier_field: name
     fields:
       - { label: Name, name: name, widget: string }
-      - { label: Description, name: description, widget: text }
+      - { label: Description, name: description, widget: text, required: false }
       - {
-          label: Time,
-          name: time,
-          widget: datetime,
-          dateFormat: false,
-          timeFormat: true,
+          label: Hours,
+          name: hours,
+          widget: list,
+          fields:
+            [
+              {
+                label: From,
+                name: from,
+                widget: datetime,
+                dateFormat: false,
+                format: "HH:MM",
+              },
+              {
+                label: To,
+                name: to,
+                widget: datetime,
+                dateFormat: false,
+                format: "HH:MM",
+              },
+            ],
         }
 
-  - name: "FoodItems"
-    label: "Food Items"
-    files:
-      - file: "src/content/foodItems/dishes.md"
-        label: Dishes
-        name: dishes
-        widget: list
-        fields:
-          - { label: Name, name: name, widget: text, required: true }
-          - { label: Description, name: description, widget: text }
-          - { label: Price, name: price, widget: number }
-          - {
-              label: Sides,
-              name: sides,
-              widget: relation,
-              collection: sides,
-              valueField: name,
-              searchFields: ["name"],
-              displayFields: ["name"],
-              multiple: true,
-            }
-          - {
-              label: "Member Menu",
-              name: menumember,
-              widget: relation,
-              collection: menus,
-              valueField: name,
-              searchFields: ["name"],
-              displayFields: ["name"],
-              multiple: true
-            }
-      - file: "src/content/footItem/sides.md"
-        label: Sides
-        name: sides
-        widget: list
-        fields:
-          - { label: Name, name: Name, widget: string, required: true }
-          - { label: Description, name: description, widget: text }
-          - { label: Price, name: price, widget: number }
-      - file: "src/content/footItem/sides.md"
-        label: Drinks
-        name: drinks
-        widget: list
-        fields:
-          - { label: Name, name: name, widget: text, required: true }
-          - { label: Description, name: description, widget: text }
-          - { label: Price, name: price, widget: number }
-          - {
-              label: "Member Menu",
-              name: menumember,
-              widget: relation,
-              collection: menus,
-              valueField: name,
-              searchFields: ["name"],
-              displayFields: ["name"],
-              multiple: true,
-            }
+  - name: sides
+    label: Sides
+    folder: "src/content/fooditem"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: name, widget: string, required: true }
+      - { label: Description, name: description, widget: text }
+      - { label: Price, name: price, widget: number }
+      
+  - name: dishes
+    label: Dishes
+    folder: "src/content/fooditem"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: name, widget: string, required: true }
+      - { label: Description, name: description, widget: text }
+      - { label: Price, name: price, widget: number } 
+      - { label: Sides, name: sidedishes, widget: relation, collection: sides, valueField: name, searchFields: ["name"], multiple: true }
+      - { label: "Menus", name: membermenus, widget: relation, collection: menus, valueField: name, searchFields: ["name"], multiple: true }
+
+  - name: drinks
+    label: Drinks
+    folder: "src/content/fooditem"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: name, widget: text, required: true }
+      - { label: Description, name: description, widget: text }
+      - { label: Price, name: price, widget: number }
+      - { label: "Member Menu", name: menumember, widget: relation, collection: menus, valueField: name, searchFields: ["name"], multiple: true }
