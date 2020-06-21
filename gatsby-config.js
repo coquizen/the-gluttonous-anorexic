@@ -47,8 +47,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify-identity`,
       options: {
-        url: `https://the-gluttonous-anorexic.netlify.com` // required!
-      }
+        url: `https://the-gluttonous-anorexic.netlify.com`, // required!
+      },
     },
     "gatsby-plugin-netlify-cms",
     // this (optional) plugin enables Progressive Web App + Offline functionality
